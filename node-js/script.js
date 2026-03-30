@@ -38,10 +38,10 @@ const fs = require('fs')
 //     else console.log("file delete");  
 // })
 
-// fs.rm("./package-lock.json", {recursive : true} , function(err){
-//     if(err) console.log(err.message);
-//     else console.log("folder removed");
-// })
+fs.rm("./landing.html", {recursive : true} , function(err){
+    if(err) console.log(err.message);
+    else console.log("folder removed");
+})
 
 // HTTP - HTTPS - - - - - - - - - - - - - - - - HTTP - HTTPS - - - - - - - - - - - - - - - - HTTP - HTTPS - - - - - - - -
 
