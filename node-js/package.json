@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "Nihal",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "vite": "^8.0.3"
+  }
 }
