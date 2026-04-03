@@ -6,3 +6,5 @@
 //  setting up ejs for ejs pages 
 
 //  setting up public static files
+//  - install ejs from npm 
+//  - setup ejs as a view engine
