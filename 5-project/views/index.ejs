@@ -3,10 +3,66 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <title>Project</title>
     </head>
     <body>
-        <h1>op</h1>
+        <div class="min-h-screen w-full bg-black p-6">
+            <div class="w-full">
+                <form class="space-y-4" action="/create" method="post">
+
+                    <!-- Title Input -->
+                    <input 
+                    type="text"
+                    placeholder="Title goes here..." name="title"
+                    class="w-full px-4 py-3 rounded-md bg-gradient-to-r from-zinc-800 to-zinc-900 text-white placeholder-gray-400 outline-none border border-zinc-700 focus:ring-2 focus:ring-blue-500"
+                    >
+
+                    <!-- Textarea -->
+                    <textarea 
+                    rows="3"
+                    placeholder="Write your task details here..." name="details"
+                    class="w-full px-4 py-3 rounded-md bg-gradient-to-r from-zinc-800 to-zinc-900 text-white placeholder-gray-400 outline-none border border-zinc-700 focus:ring-2 focus:ring-blue-500 resize-none"
+                    ></textarea>
+
+                    <!-- Button -->
+                    <button 
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md transition duration-300"
+                    >
+                    Create Task
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="tasks min-h-screen w-full bg-black pt-5">
+                <div class="w-full flex flex-wrap gap-5">
+
+                    <% if(files.length > 0){ %>
+
+                        <% files.forEach(function(val){ %>
+
+                            <div class="task bg-gradient-to-r from-zinc-800/80 to-zinc-900/80 backdrop-blur-md p-5 rounded-xl border border-zinc-700 shadow-lg">
+                                <h1 class="text-xl font-semibold text-white mb-2">
+                                    <%=val%>
+                                </h1>
+                                <a href="/" class="text-blue-500 hover:text-blue-400 text-sm font-medium">
+                                    Read More →
+                                </a>
+                            </div>
+
+                        <% }) %>
+
+                    <% } else { %>
+                        <h3 class="text-zinc-400">no task yet!</h3>
+                    <% } %>
+
+                </div>
+            </div>   
+        </div>
+
         
+        
+     <script src="/javascript/script.js"></script>
     </body>
 </html>
