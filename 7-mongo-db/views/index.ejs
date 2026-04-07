@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="stylesheets\style.css">
+        <title>Project</title>
+    </head>
+    <body>
+        
+        <div class="main w-full h-full bg-black text-white p-10">
+            <h1 class="text-2xl font-semibold mb-6">Create User</h1>
+            <!-- Form -->
+            <form action="/create" method="POST" class="flex gap-2 items-center">
+
+                    <!-- Name -->
+                    <input 
+                    type="text" 
+                    name="name"
+                    placeholder="name"
+                    class="bg-transparent border border-gray-600 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    />
+
+                    <!-- Email -->
+                    <input 
+                    type="email" 
+                    name="email"
+                    placeholder="email"
+                    class="bg-transparent border border-gray-600 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                    />
+
+                    <!-- Image URL -->
+                    <input 
+                    type="text" 
+                    name="image"
+                    placeholder="image url"
+                    class="bg-transparent border border-gray-600 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+
+                    <!-- Button -->
+                    <button 
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-md transition"
+                    >
+                    Create User
+                    </button>
+            </form>
+        </div>
+                
+                
+        <script src="/javascript/script.js"></script>
+    </body>
+</html>
