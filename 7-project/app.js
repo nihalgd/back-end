@@ -25,6 +25,17 @@ app.get("/delete/:id", async function (req, res) {
     res.redirect("/read")
 });
 
+app.get("/edit/:userid", async function (req, res) {
+    let user = await usermodel.findOne({ _id: req.params.userid });
+    res.render("edit", { user });
+});
+
+app.post("/updated/:userid", async function (req, res) {
+   let {email , name , image} = req.body
+   await usermodel.findOneAndUpdate({_id : req.params.userid} , {image , name , email} , {new : true})
+   res.redirect("/read")
+});
+
 app.post("/create" , async function(req,res){
    let {name , email , image} = req.body;
 
