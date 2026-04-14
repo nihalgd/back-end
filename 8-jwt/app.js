@@ -5,16 +5,24 @@ app.use(cookieParser());
 const bcrypt = require('bcrypt');
 
 app.get("/", function (req, res) {
-    res.cookie("name", "nihal")
-    res.send("heeyyyyyy!!")
-    console.log(req.cookies);
-})
 
-bcrypt.genSalt(saltRounds, function(err, salt) {
-    bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-        // Store hash in your password DB.
+    res.cookie("name", "nihal-goud")
+    console.log(req.cookies);
+
+    bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash("nihal-goud", salt, function(err, hash) {
+          console.log(hash);  
+        });
     });
-});
+
+    bcrypt.compare("nihal-goud", "$2b$10$.HQNgxlZRtLIohCCyS0tAOyPY0LCWxO0OAAunR5x3XLzuDBddn6uW", function(err, result) {
+        res.send("heeyyyyyy!!")
+        console.log(result);
+    // result == true
+    });
+})
 
 
 app.listen(3000);
+
+
