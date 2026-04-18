@@ -128,6 +128,14 @@ app.get('/logout' , function(req,res){
     res.redirect("/login")
 })
 
+app.get('/delete/:id', isLoggedIn, async function(req, res){
+    await postModel.findByIdAndDelete(req.params.id);
+    await userModel.findByIdAndUpdate(req.user.userid, {
+        $pull: { posts: req.params.id }
+    });
+    res.redirect("/profile");
+});
+
 // middileware
 function isLoggedIn(req, res, next) {
     if (req.cookies.token === "") {
