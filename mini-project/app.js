@@ -20,9 +20,60 @@ app.get('/login' , function(req,res){
     res.render("login")
 })
 
+app.get('/like/:id', isLoggedIn, async function(req,res){
+    let post = await postModel.findById(req.params.id);
+    let userId = req.user.userid;
+
+    if(post.likes.indexOf(userId) === -1){
+        post.likes.push(userId);
+    }
+    else{
+        post.likes.splice(post.likes.indexOf(userId), 1);
+    }
+
+    await post.save();
+    res.redirect("/profile");
+});
+
+app.get('/edit/:id', isLoggedIn, async function (req, res) {
+    
+    let post = await postModel.findById(req.params.id);
+    res.render("edit", { post });
+
+});
+
+app.post('/update/:id', isLoggedIn, async function (req, res) {
+
+    let { content } = req.body;
+
+    await postModel.findByIdAndUpdate(req.params.id, {
+        content: content
+    });
+
+    res.redirect("/profile");
+
+});
+
 app.get('/profile', isLoggedIn , async function(req,res){
+    let user = await userModel
+        .findOne({ email: req.user.email })
+        .populate("posts");
+
+    res.render("profile", { user });
+});
+
+app.post('/posts', isLoggedIn , async function(req,res){
     let user = await userModel.findOne({email:req.user.email})
-    res.render("profile" , {user})
+    let {content} = req.body;
+
+    let post = await postModel.create({
+        user : user._id,
+        content
+    })
+
+    user.posts.push(post._id);
+    await user.save();
+    res.redirect("/profile")
 })
 
 app.post('/register' , async function(req,res){

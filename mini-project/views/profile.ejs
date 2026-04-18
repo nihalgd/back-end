@@ -25,7 +25,7 @@
             </p>
 
   
-            <form action="" method="post" class="space-y-3">
+            <form action="/posts" method="post" class="space-y-3">
             <textarea
                 name="content"
                 rows="3"
@@ -41,10 +41,43 @@
             </form>
 
 
-        </div>
+            <div class="mt-12 w-[560px] space-y-4">
 
-        <div>
+                <h2 class="text-xl font-semibold text-zinc-200 mb-5">
+                    Your Posts.
+                </h2>
 
+                 <% user.posts.forEach(function(post){ %>
+
+                    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4 shadow-md">
+
+                        <h3 class="text-blue-500 text-lg font-semibold mb-2">
+                            @<%= user.username %>
+                        </h3>
+
+                        <p class="text-white text-base leading-relaxed mb-4">
+                            <%= post.content %>
+                        </p>
+
+                        <small class="mt-2 inline-block text-zinc-400">
+                            <%= post.likes.length %> likes
+                        </small>
+
+                        <div class="flex gap-4 mt-3">
+                            <a href="/like/<%= post._id %>" class="text-blue-500 hover:underline text-base">
+                                Like
+                            </a>
+
+                            <a href="/edit/<%= post._id %>" class="text-zinc-500 hover:text-white text-base">
+                                Edit
+                            </a>
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
         </div>
 
     </body>
