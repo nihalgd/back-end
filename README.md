@@ -221,3 +221,4 @@ mkdir public\images\uploads
 - Add a root `.gitignore` for `node_modules`.
 - Add validation and better error handling to form and auth routes.
 - Split larger app files into routes, controllers, models, and middleware as projects grow.
+
